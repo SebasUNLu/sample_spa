@@ -1,9 +1,10 @@
 import Image from "next/image";
+import MainTittle from "./components/MainTittle";
 
 export default function Home() {
   return (
-   <div>
-    Content
-   </div>
+    <div className="w-full">
+      <MainTittle name="Enterprise" />
+    </div>
   );
 }
