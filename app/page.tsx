@@ -19,7 +19,7 @@ export default function Home() {
     <main className="flex flex-col grow items-center justify-center self-center w-full">
       {sectionList.map((section) => {
         const { component, title } = section;
-        return <PageSection children={component} title={title} />;
+        return <PageSection children={component} title={title} key={title} />;
       })}
     </main>
   );
