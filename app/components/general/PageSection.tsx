@@ -5,7 +5,7 @@ type props = {
 
 export default function PageSection({ title, children }: props) {
   return (
-    <section id={`${title}`} className="w-ful flex flex-col justify-center my-4 p-4">
+    <section id={`${title}`} className="w-full flex flex-col justify-center my-4 p-4">
       <SectionTitle title={title} />
       {children}
     </section>
