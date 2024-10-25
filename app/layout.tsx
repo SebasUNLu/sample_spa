@@ -30,7 +30,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased`}
       >
-        <MainTittle name="Enterprise" />
         {children}
         <Footer />
       </body>
