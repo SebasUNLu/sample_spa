@@ -35,10 +35,10 @@ type ProductCardProps = {
 function ProductCard({ product }: ProductCardProps) {
   const { description, id, img, name, price } = product;
   return (
-    <div className="bg-slate-400 flex flex-col p-4 listCard min-w-48">
+    <div className="bg-slate-400 flex flex-col p-2 listCard w-40">
       <Image src={img.src} alt={img.alt} width={200} height={200} />
       <div>
-        <p className="font-bold text-4xl">{name}</p>
+        <p className="font-bold">{name}</p>
         <p>{description}</p>
         <p>${price}</p>
       </div>
