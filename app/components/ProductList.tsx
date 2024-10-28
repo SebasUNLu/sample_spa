@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Product, productList } from "./products/productList";
+import { Product, productList } from "../data/products/productList";
 
 let perfumeList = productList.filter((prod) => prod.type == "perfume");
 let cremaList = productList.filter((prod) => prod.type == "crema");
