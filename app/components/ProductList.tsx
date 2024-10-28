@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Product, productList } from "../data/products/productList";
+import { productList } from "../data/products/productList";
+import { Product } from "../data/products/type";
 
 let perfumeList = productList.filter((prod) => prod.type == "perfume");
 let cremaList = productList.filter((prod) => prod.type == "crema");
@@ -17,7 +18,7 @@ function DivList({ title, list }: { title: string; list: Product[] }) {
   return (
     <div className="flex flex-col w-full">
       <p className="text-3xl">{title}</p>
-      <div className="flex overflow-x-scroll gap-4 w-4/5">
+      <div className="flex gap-4 w-4/5">
         {list.map((prod, index) => (
           <ProductCard product={prod} key={`perfume_${index}`} />
         ))}
