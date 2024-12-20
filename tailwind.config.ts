@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        aloe_pink: "#FFD4E9",
+        blossom_blue: "#B1D2F3"
       },
     },
   },

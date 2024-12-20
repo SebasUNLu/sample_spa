@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./components/Footer";
 import MainTittle from "./components/MainTittle";
+import Header from "./components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Enterprise",
+  title: "Alloe Blossom - Day Spa",
   description: "Sample SPA for practice purpose",
 };
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased`}
       >
+        <Header />
         {children}
         <Footer />
       </body>

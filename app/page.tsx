@@ -7,21 +7,17 @@ import ContactList from "./components/ContactList";
 import PageSection from "./components/general/PageSection";
 
 export default function Home() {
-  const sectionList = [
-    { title: "Productos", component: <ProductList /> },
-    { title: "Servicios", component: <ServiceList /> },
-    { title: "Conoce al Equipo", component: <TeamList /> },
-    { title: "Donde nos podes encontrar", component: <Location /> },
-    { title: "Contáctanos", component: <ContactList /> },
-  ];
+  // const sectionList = [
+  //   { title: "Productos", component: <ProductList /> },
+  //   { title: "Servicios", component: <ServiceList /> },
+  //   { title: "Conoce al Equipo", component: <TeamList /> },
+  //   { title: "Donde nos podes encontrar", component: <Location /> },
+  //   { title: "Contáctanos", component: <ContactList /> },
+  // ];
 
   return (
     <main className="flex flex-col grow items-center justify-center self-center w-full max-w-screen-lg">
-      <MainTittle name="Enterprise" />
-      {sectionList.map((section) => {
-        const { component, title } = section;
-        return <PageSection children={component} title={title} key={title} />;
-      })}
+      
     </main>
   );
 }
