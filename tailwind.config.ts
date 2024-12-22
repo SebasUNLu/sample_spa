@@ -11,8 +11,14 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        aloe_pink: "#FFD4E9",
-        blossom_blue: "#B1D2F3"
+        aloe_pink: "#FDB3D7",
+        aloe_pink_2: "#F98ECD",
+        blossom_blue: "#63D0FD",
+        blossom_blue_2: "#2993D2",
+      },
+      backgroundImage: {
+        "hero-pattern_1": "url('/imgs/spa_1.webp')",
+        "hero-pattern_2": "url('/imgs/spa_2.webp')",
       },
     },
   },

@@ -5,6 +5,7 @@ import TeamList from "./components/TeamList";
 import Location from "./components/Location";
 import ContactList from "./components/ContactList";
 import PageSection from "./components/general/PageSection";
+import Hero from "./components/Hero";
 
 export default function Home() {
   // const sectionList = [
@@ -16,8 +17,8 @@ export default function Home() {
   // ];
 
   return (
-    <main className="flex flex-col grow items-center justify-center self-center w-full max-w-screen-lg">
-      
+    <main className="flex flex-col pt-20 grow items-center justify-center self-center w-full max-w-screen-lg">
+      <Hero />
     </main>
   );
 }
