@@ -9,7 +9,7 @@ let title = '"Aloe Blossom"'
 
 export default function Header() {
   return (
-    <div className="fixed top-0 flex h-20 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md">
+    <div className="fixed top-0 flex h-20 z-50 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md">
       <div className="w-1/5 flex items-center justify-center text-4xl italic">
         {title}
       </div>

@@ -1,11 +1,5 @@
-import MainTittle from "./components/MainTittle";
-import ProductList from "./components/ProductList";
-import ServiceList from "./components/ServiceList";
-import TeamList from "./components/TeamList";
-import Location from "./components/Location";
-import ContactList from "./components/ContactList";
-import PageSection from "./components/general/PageSection";
 import Hero from "./components/Hero";
+import ServiceSection from "./components/services/ServiceSection";
 
 export default function Home() {
   // const sectionList = [
@@ -19,6 +13,7 @@ export default function Home() {
   return (
     <main className="flex flex-col pt-20 grow items-center justify-center self-center w-full max-w-screen-lg">
       <Hero />
+      <ServiceSection />
     </main>
   );
 }
