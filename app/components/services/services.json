@@ -9,5 +9,27 @@
       "src": "/imgs/services/service_1.webp",
       "alt": "Service"
     }
+  },
+  {
+    "id": 2,
+    "name": "Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius purus purus. In hac habitasse platea dictumst. Etiam eleifend lacinia massa, a ultricies magna. D",
+    "time": 1,
+    "price": 10000,
+    "img": {
+      "src": "/imgs/services/service_1.webp",
+      "alt": "Service"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Service",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius purus purus. In hac habitasse platea dictumst. Etiam eleifend lacinia massa, a ultricies magna. D",
+    "time": 1,
+    "price": 10000,
+    "img": {
+      "src": "/imgs/services/service_1.webp",
+      "alt": "Service"
+    }
   }
 ]
