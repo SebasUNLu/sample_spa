@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import MainTittle from "./components/MainTittle";
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,9 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased pt-20`}
       >
         <Header />
+        <Hero />
         {children}
         <Footer />
       </body>

@@ -8,8 +8,8 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex flex-col pt-20 grow items-center justify-center self-center w-full max-w-screen-lg">
-      <Hero />
+    <main className="flex flex-col grow items-center justify-center self-center w-full max-w-screen-lg">
+      
       {sectionList.map(({ component, title }, index) => (
         <PageSection
           title={title}

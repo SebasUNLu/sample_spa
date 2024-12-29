@@ -15,7 +15,8 @@ const config: Config = {
         aloe_pink_2: "#F98ECD",
         blossom_blue: "#63D0FD",
         blossom_blue_2: "#2993D2",
-        service_card_bg: "#D9D9D9"
+        service_card_bg: "#D9D9D9",
+        hero_background: "#D9D9D9"
       },
       backgroundImage: {
         "hero-pattern_1": "url('/imgs/spa_1.webp')",
