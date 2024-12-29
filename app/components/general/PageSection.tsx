@@ -4,6 +4,7 @@ type props = {
   title: string;
   children: React.ReactNode;
 };
+
 export default function PageSection({ title, children }: props) {
   return (
     <section id={`${title}`} className="w-full flex flex-col justify-center my-4 p-4">
