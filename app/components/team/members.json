@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Aloe",
+    "description": "Masajista certificada",
+    "img": {
+      "src": "/imgs/members/member_1.png",
+      "alt": "Member"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Lotus Blossom",
+    "description": "Experta en terapias de relajación",
+    "img": {
+      "src": "/imgs/members/member_2.png",
+      "alt": "Member"
+    }
+  }
+]
