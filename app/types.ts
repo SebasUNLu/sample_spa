@@ -1,10 +1,19 @@
+export type CustomImage = {
+  src: string;
+  alt: string;
+};
+
 export type Service = {
   id: number;
   name: string;
   description: string;
   price: number;
-  img: {
-    src: string;
-    alt: string;
-  };
+  img: CustomImage;
+};
+
+export type Member = {
+  id: number;
+  name: string;
+  description: string;
+  img: CustomImage;
 };

@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Aloe",
+    "name": "Aloe Vera",
     "description": "Masajista certificada",
     "img": {
-      "src": "/imgs/members/member_1.png",
+      "src": "/imgs/members/member_2.png",
       "alt": "Member"
     }
   },
@@ -13,7 +13,7 @@
     "name": "Lotus Blossom",
     "description": "Experta en terapias de relajación",
     "img": {
-      "src": "/imgs/members/member_2.png",
+      "src": "/imgs/members/member_1.png",
       "alt": "Member"
     }
   }

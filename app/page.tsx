@@ -1,10 +1,12 @@
 import PageSection from "./components/general/PageSection";
 import Hero from "./components/Hero";
 import ServiceSection from "./components/services/ServiceSection";
+import TeamSection from "./components/team/TeamSection";
 
 export default function Home() {
   const sectionList = [
     { title: "Servicios que ofrecemos", component: <ServiceSection /> },
+    { title: "Conoce a nuestro equipo", component: <TeamSection /> },
   ];
 
   return (
