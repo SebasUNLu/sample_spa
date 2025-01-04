@@ -31,7 +31,7 @@ function CardImage(img: { src: string; alt: string }) {
         height={320}
         className="rounded-lg h-full w-auto opacity-50"
       />
-      <div className="absolute w-full h-full top-0 bg-gradient-to-r from-service_card_bg to-transparent"></div>
+      <div className="absolute w-full h-full top-0 bg-gradient-to-r from-card to-transparent"></div>
     </div>
   );
 }
