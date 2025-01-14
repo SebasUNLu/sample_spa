@@ -1,8 +1,7 @@
-import { PrismaClient } from "@prisma/client/extension";
 import { NextRequest, NextResponse } from "next/server";
 import { hashPassword } from "../argon2";
+import prisma from "@/lib/prisma";
 
-const prisma = new PrismaClient();
 
 export async function GET() {
   try {
@@ -17,7 +16,9 @@ export async function GET() {
   }
 }
 
+// Register
 export async function POST(req: NextRequest) {
+  console.log("enterin the post function")
   try {
     const body = await req.json();
     const { name, email, pass } = body;
@@ -28,12 +29,15 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    console.log("all items")
 
     let hashedPass = await hashPassword(pass);
+    console.log("hashed")
 
     const newUser = await prisma.user.create({
       data: { name, email, pass: hashedPass },
     });
+    console.log("new user")
 
     return NextResponse.json(newUser, { status: 201 });
   } catch (error) {
