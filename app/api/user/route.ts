@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hashPassword } from "../argon2";
+import { hashPassword } from "../../../lib/argon2";
 import prisma from "@/lib/prisma";
 
 
