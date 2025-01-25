@@ -32,7 +32,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased pt-20`}
       >
         <Header />
-        <Hero />
         {children}
         <Footer />
       </body>
