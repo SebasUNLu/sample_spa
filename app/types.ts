@@ -17,3 +17,9 @@ export type Member = {
   description: string;
   img: CustomImage;
 };
+
+export interface tokenPayload {
+  userId: number;
+  name: string;
+  email: string;
+}

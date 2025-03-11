@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import UserDTO from "@/app/DTOs/user.dto";
 
 async function getUser(id: Number) {
   const user = await prisma.user.findUnique({
@@ -22,7 +23,10 @@ export async function GET(
   }
   try {
     const user = await getUser(Number(userId));
-    return NextResponse.json(user, { status: 200 });
+
+    const dto = new UserDTO(user);
+
+    return NextResponse.json(dto, { status: 200 });
   } catch (error) {
     console.error("Error al obtener usuario:", error);
     return NextResponse.json(
@@ -53,6 +57,33 @@ export async function PUT(
     });
 
     return NextResponse.json(user, { status: 200 });
+  } catch (error) {
+    console.error("Error al obtener usuario:", error);
+    return NextResponse.json(
+      { error: "Error al obtener usuario" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { userId: string } }
+) {
+  const { userId } = params;
+
+  if (!userId || isNaN(Number(userId))) {
+    return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+  }
+
+  try {
+    const deletedUser = await prisma.user.delete({
+      where: { id: Number(userId) },
+    });
+
+    const dto = new UserDTO(deletedUser);
+
+    return NextResponse.json(dto, { status: 200 });
   } catch (error) {
     console.error("Error al obtener usuario:", error);
     return NextResponse.json(

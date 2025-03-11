@@ -12,14 +12,14 @@ let title = '"Aloe Blossom"';
 
 export default function Header() {
   return (
-    <div className="fixed top-0 flex justify-between h-20 z-50 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md">
+    <div className="fixed top-0 flex justify-between h-20 z-50 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md ">
       <div className="w-1/5 flex items-center justify-center text-4xl italic">
         {title}
       </div>
       <div className="w-2/5 flex items-center justify-around">
         {sectionList.map(({ href, name }) => {
           return (
-            <Link id={href} className="font-bold text-xl" href={`/${href}`}>
+            <Link id={href} className="font-bold text-xl hover:text-slate-600 transition-all duration-200" href={`/${href}`}>
               {name}
             </Link>
           );

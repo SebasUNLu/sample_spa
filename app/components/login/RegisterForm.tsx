@@ -1,6 +1,9 @@
 "use client";
 
+import UserDTO from "@/app/DTOs/user.dto";
 import { firstUppercase } from "@/lib/customs";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import {
   useForm,
   SubmitHandler,
@@ -15,15 +18,15 @@ interface IFormInputs {
   password: string;
 }
 
-type InputProps = {
-  label: Path<IFormInputs>;
-  register: UseFormRegister<IFormInputs>;
-  required: boolean;
-  placeholder?: string;
-  errors: FieldErrors<IFormInputs>;
-};
+interface ExpectedResponse {
+  token: string;
+  user: UserDTO;
+}
 
 export default function RegisterForm() {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   // define el hook
   const {
     register,
@@ -32,8 +35,27 @@ export default function RegisterForm() {
   } = useForm<IFormInputs>();
 
   // Función Submit
-  const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/user", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Error en la solicitud");
+
+      const result: ExpectedResponse = await response.json();
+      // TODO load user into the glboal context
+      localStorage.setItem("aloe_token", result.token);
+
+      router.push("/"); // ✅ Redirección corregida
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -45,7 +67,14 @@ export default function RegisterForm() {
       >
         {/* register your input into the hook by invoking the "register" function 
            register takes the name of the param in the FormInputs type defined*/}
-        <input placeholder="mi Nombre..." {...register("name")} />
+        <FormInput
+          label="name"
+          altLabel="Nombre"
+          register={register}
+          required
+          placeholder="su nombre..."
+          errors={errors}
+        />
 
         <FormInput
           label="email"
@@ -55,38 +84,55 @@ export default function RegisterForm() {
           errors={errors}
         />
 
-        <input
-          placeholder="mi contraseña..."
-          {...register("password", { required: true })}
-          aria-invalid={errors.password ? "true" : "false"}
+        <FormInput
+          label="password"
+          register={register}
+          required
+          altLabel="Contraseña"
+          errors={errors}
+          type="password"
         />
-        {errors.password?.type === "required" && (
-          <p role="alert">Password is required</p>
-        )}
 
-        <input type="submit" />
+        <input
+          type="submit"
+          className=""
+          value={loading ? "esperando" : "Registrarse"}
+        />
       </form>
     </div>
   );
 }
 
+type InputProps = {
+  label: Path<IFormInputs>;
+  register: UseFormRegister<IFormInputs>;
+  errors: FieldErrors<IFormInputs>;
+  required?: boolean;
+  altLabel?: string;
+  altError?: string;
+} & React.InputHTMLAttributes<HTMLInputElement>;
+
 function FormInput({
   label,
   register,
-  required,
-  placeholder = "",
   errors,
+  altLabel,
+  altError,
+  required = false,
+  ...rest
 }: InputProps) {
   return (
     <div className="flex flex-col w-full gap-2">
-      <label className="font-bold">{firstUppercase(label)}</label>
+      <label className="font-bold">{firstUppercase(altLabel ?? label)}:</label>
       <input
         {...register(label, { required })}
         className="rounded-lg px-4"
-        placeholder={placeholder}
+        {...rest}
       />
-      {errors.password?.type === "required" && (
-        <p role="alert" className="text-red-500 font-bold">{`${label} es requerido`}</p>
+      {errors[label]?.type === "required" && (
+        <p role="alert" className="text-red-500 font-bold">
+          {altError ?? `${firstUppercase(label)} es requerido`}
+        </p>
       )}
     </div>
   );
