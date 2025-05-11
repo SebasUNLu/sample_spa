@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/app/context/AuthContext";
 import UserDTO from "@/app/DTOs/user.dto";
 import { firstUppercase } from "@/lib/customs";
 import { useRouter } from "next/navigation";
@@ -27,6 +28,9 @@ export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const [remember, setRemember] = useState(false);
+  const { login } = useAuth();
+
   // define el hook
   const {
     register,
@@ -47,8 +51,9 @@ export default function RegisterForm() {
       if (!response.ok) throw new Error("Error en la solicitud");
 
       const result: ExpectedResponse = await response.json();
-      // TODO load user into the glboal context
-      localStorage.setItem("aloe_token", result.token);
+
+      // setea el usaurio en el context
+      login(result.user, result.token, remember);
 
       router.push("/"); // ✅ Redirección corregida
     } catch (error) {
@@ -92,6 +97,16 @@ export default function RegisterForm() {
           errors={errors}
           type="password"
         />
+
+        <div className="flex gap-2 items-center">
+          <input
+            type="checkbox"
+            id="remember"
+            checked={remember}
+            onChange={(e) => setRemember(e.target.checked)}
+          />
+          <label htmlFor="remember">Mantener sesión iniciada</label>
+        </div>
 
         <input
           type="submit"
