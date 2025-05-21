@@ -1,16 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import UserDTO from "@/app/DTOs/user.dto";
-
-async function getUser(id: Number) {
-  const user = await prisma.user.findUnique({
-    where: { id: Number(id) },
-  });
-  if (!user) {
-    throw NextResponse.json({ error: "User not found" }, { status: 404 });
-  }
-  return user;
-}
+import { getUser } from "@/lib/prismaQueries";
 
 export async function GET(
   req: NextRequest,

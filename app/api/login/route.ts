@@ -1,3 +1,4 @@
+import UserDTO from "@/app/DTOs/user.dto";
 import { hashPassword, verifyPassword } from "@/lib/argon2";
 import { generateToken } from "@/lib/auth";
 import prisma from "@/lib/prisma";
@@ -9,6 +10,7 @@ interface loginParams {
 }
 
 // Login
+// espera un cuerpo JSON con email y password
 export async function POST(req: NextRequest) {
   const { email, password } = (await req.json()) as loginParams;
 
@@ -36,8 +38,9 @@ export async function POST(req: NextRequest) {
 
     // Genera el token JWT
     const token = generateToken(user.id);
+    const userDto = new UserDTO(user);
 
-    return NextResponse.json({ token });
+    return NextResponse.json({ user: userDto, token });
   } catch (error) {
     console.error(error);
     return NextResponse.json(

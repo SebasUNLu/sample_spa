@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import UserDTO from "@/app/DTOs/user.dto";
 import { generateToken } from "@/lib/auth";
 
+// GET all users
 export async function GET() {
   try {
     const users = await prisma.user.findMany();
@@ -19,6 +20,7 @@ export async function GET() {
 }
 
 // Register
+// expects a JSON body with name, email, and password
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -55,6 +57,8 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// Modifica un usuario existente
+// expects a JSON body with id, name, email, and password
 export async function PUT(req: NextRequest) {
   try {
     const body = await req.json();
@@ -82,6 +86,8 @@ export async function PUT(req: NextRequest) {
   }
 }
 
+// Elimina un usuario existente
+// expects a query parameter with id
 export async function DELETE(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

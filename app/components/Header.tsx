@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
 
 let sectionList = [
   { name: "Inicio", href: "" },
@@ -14,7 +15,8 @@ let sectionList = [
 let title = '"Aloe Blossom"';
 
 export default function Header() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const router = useRouter();
 
   return (
     <div className="fixed top-0 flex justify-between h-20 z-50 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md ">
@@ -25,7 +27,7 @@ export default function Header() {
         {sectionList.map(({ href, name }) => {
           return (
             <Link
-              id={href}
+              key={href}
               className="font-bold text-xl hover:text-slate-600 transition-all duration-200"
               href={`/${href}`}
             >
@@ -39,6 +41,10 @@ export default function Header() {
           <Link
             href=""
             className="font-bold text-xl hover:text-slate-600 transition-all duration-200"
+            onClick={() => {
+              logout();
+              router.push("/");
+            }}
           >
             {user.name}
           </Link>

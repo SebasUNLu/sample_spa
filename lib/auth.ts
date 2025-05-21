@@ -2,6 +2,9 @@ import jwt from "jsonwebtoken";
 import { NextRequest } from "next/server";
 import prisma from "@/lib/prisma";
 
+// si no está definido en las variables de entorno, lanza un error
+if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET is not defined");
+
 const secret = process.env.JWT_SECRET!;
 const expiresIn = process.env.JWT_EXPIRES_IN || "1h";
 
@@ -22,6 +25,10 @@ export const generateToken = (userId: number) => {
 export const verifyToken = (token: string) => {
   try {
     let decoded = jwt.verify(token, secret);
+
+    if (typeof decoded !== "object" || !("userId" in decoded)) {
+      throw new Error("Token malformado");
+    }
 
     return decoded as jwtData;
   } catch (error) {
