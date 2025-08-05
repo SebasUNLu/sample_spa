@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
+import TooltipWrapper from "./general/TooltipWrapper";
 
 let sectionList = [
   { name: "Inicio", href: "" },
@@ -36,18 +37,32 @@ export default function Header() {
           );
         })}
       </div>
-      <div className="w-1/5 flex items-center justify-center">
+      <div className="w-1/5 flex items-center justify-center gap-4">
         {user ? (
-          <Link
-            href=""
-            className="font-bold text-xl hover:text-slate-600 transition-all duration-200"
-            onClick={() => {
-              logout();
-              router.push("/");
-            }}
-          >
-            {user.name}
-          </Link>
+          <>
+            {/* Boton Ver perfil */}
+            <TooltipWrapper tooltipText="Ver perfil">
+              <Link
+                href={`/perfil/${user.id}`}
+                className="font-bold text-xl hover:text-slate-600 transition-all duration-200"
+                onClick={() => {
+                  router.push(`/perfil/${user.id}`);
+                }}
+              >
+                {user.name}
+              </Link>
+            </TooltipWrapper>
+
+            {/* Boton Logout */}
+            <TooltipWrapper tooltipText="Cerrar sesión">
+              <button
+                onClick={logout}
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none"
+              >
+                Logout
+              </button>
+            </TooltipWrapper>
+          </>
         ) : (
           <div className=" w-full flex gap-2">
             <HeaderButton href="register" text="Registrate" />
