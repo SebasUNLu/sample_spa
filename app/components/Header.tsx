@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import TooltipWrapper from "./general/TooltipWrapper";
+import Image from "next/image";
 
 let sectionList = [
   { name: "Inicio", href: "" },
@@ -20,11 +21,17 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <div className="fixed top-0 flex justify-between h-20 z-50 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md ">
+    <div className="fixed top-0 gap-2 flex justify-between items-center h-20 z-50 w-full bg-gradient-to-b from-aloe_pink to-blossom_blue drop-shadow-md ">
       <div className="w-1/5 flex items-center justify-center text-4xl italic">
-        {title}
+        <Image
+          alt=""
+          src={"/imgs/Spa-logo.png"}
+          width={360}
+          height={120}
+        ></Image>
       </div>
-      <div className="w-2/5 flex items-center justify-around">
+      <div className="border-l-2 h-1/2"></div>
+      <div className="w-3/5 flex items-center justify-evenly">
         {sectionList.map(({ href, name }) => {
           return (
             <Link
@@ -37,6 +44,7 @@ export default function Header() {
           );
         })}
       </div>
+      <div className="border-l-2 h-1/2"></div>
       <div className="w-1/5 flex items-center justify-center gap-4">
         {user ? (
           <>
