@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased pt-20`}
+        className={`${geistSans.variable} ${geistMono.variable} flex flex-col antialiased pt-20 min-h-screen justify-between`}
       >
         <AuthProvider>
           <Header />

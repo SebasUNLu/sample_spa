@@ -51,10 +51,10 @@ export default function Header() {
             {/* Boton Ver perfil */}
             <TooltipWrapper tooltipText="Ver perfil">
               <Link
-                href={`/perfil/${user.id}`}
+                href={`/perfil`}
                 className="font-bold text-xl hover:text-slate-600 transition-all duration-200"
                 onClick={() => {
-                  router.push(`/perfil/${user.id}`);
+                  router.push(`/perfil`);
                 }}
               >
                 {user.name}
