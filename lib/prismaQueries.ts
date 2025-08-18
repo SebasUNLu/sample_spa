@@ -1,4 +1,3 @@
-
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -17,6 +16,15 @@ export async function getUser(id: Number) {
     throw NextResponse.json({ error: "User not found" }, { status: 404 });
   }
   return user;
+}
+
+export async function getImage(id: Number) {
+  const image = await prisma.img.findUnique({
+    where: { id: Number(id) },
+  });
+  if (!image)
+    throw NextResponse.json({ error: "Image not found" }, { status: 404 });
+  return image;
 }
 
 //get user by email

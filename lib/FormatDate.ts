@@ -1,3 +1,8 @@
+/**
+ * Devuelve el date entregado en formato dia/mes/año
+ * @param date 
+ * @returns 
+ */
 export function formatDate(date: Date) {
   const formattedDate = new Intl.DateTimeFormat("es-AR", {
     day: "2-digit",
